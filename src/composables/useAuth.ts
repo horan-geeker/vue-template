@@ -1,7 +1,7 @@
 export function useAuth() {
     const loginWithGoogle = () => {
         const clientId = '1088178830194-vauvp835rfi35k3l1t8j27i8esi3eeub.apps.googleusercontent.com'; // TODO: specific client ID
-        const redirectUri = 'https://api.k-linechart.life/callback/google-auth'; // Or a specific callback URL
+        const redirectUri = 'https://api.example.com/callback/google-auth'; // Or a specific callback URL
         const scope = 'profile email';
         const responseType = 'code'; // or 'code' based on backend
         const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}`;
