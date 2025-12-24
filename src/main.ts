@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 
 import App from './App.vue'
+import GoogleCallback from './pages/callback/GoogleCallback.vue'
 import Home from './pages/Home.vue'
 import en from './locales/en.json'
 import zhCN from './locales/zh-CN.json'
@@ -22,6 +23,7 @@ const routes = [
     { path: '/', component: Home },
     { path: '/zh-CN', component: Home },
     { path: '/zh-TW', component: Home },
+    { path: '/callback/google', component: GoogleCallback },
 ]
 
 export const createApp = ViteSSG(

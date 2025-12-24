@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import HelloWorld from '@/components/HelloWorld.vue'
 import TheWelcome from '@/components/TheWelcome.vue'
+import GoogleLogin from '@/components/GoogleLogin.vue'
 </script>
 
 <template>
-  <header>
+  <header class="relative">
+    <div class="absolute top-0 right-0 p-4">
+      <GoogleLogin />
+    </div>
+
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
