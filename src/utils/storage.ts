@@ -1,11 +1,16 @@
+const isClient = typeof window !== 'undefined';
+
 export const tokenStorage = {
     getToken(): string {
+        if (!isClient) return '';
         return localStorage.getItem('token') || '';
     },
     setToken(token: string) {
+        if (!isClient) return;
         localStorage.setItem('token', token);
     },
     removeToken() {
+        if (!isClient) return;
         localStorage.removeItem('token');
     }
 };
