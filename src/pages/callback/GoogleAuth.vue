@@ -36,7 +36,7 @@ onMounted(async () => {
         window.opener.postMessage({
            type: 'GOOGLE_LOGIN_SUCCESS',
            payload: response.data
-        }, window.location.origin);
+        }, '*');
         window.close();
       } else {
          // Fallback if not a popup
