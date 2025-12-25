@@ -3,7 +3,7 @@ import { useUser } from './useUser';
 
 export function useAuth() {
     const { setUser } = useUser();
-    let messageHandler: ((event: MessageEvent) => void) | null = null;
+    let channel: BroadcastChannel | null = null;
 
     const loginWithGoogle = () => {
         const clientId = '1088178830194-vauvp835rfi35k3l1t8j27i8esi3eeub.apps.googleusercontent.com';
@@ -23,28 +23,30 @@ export function useAuth() {
             `width=${width},height=${height},top=${top},left=${left}`
         );
 
-        // Remove existing listener if any to prevent duplicates
-        if (messageHandler) {
-            window.removeEventListener('message', messageHandler);
+        // Close existing channel if any
+        if (channel) {
+            channel.close();
         }
 
-        messageHandler = (event: MessageEvent) => {
-            if (event.origin !== window.location.origin) return;
-
+        channel = new BroadcastChannel('google-auth_channel');
+        channel.onmessage = (event) => {
             if (event.data && event.data.type === 'GOOGLE_LOGIN_SUCCESS') {
                 const { user, token } = event.data.payload;
                 setUser(user, token);
-                // Optional: Show success toast
-                console.log('Login successful', user);
+                console.log('Login successful via BroadcastChannel', user);
+
+                // Close channel after success
+                if (channel) {
+                    channel.close();
+                    channel = null;
+                }
             }
         };
-
-        window.addEventListener('message', messageHandler);
     };
 
     onUnmounted(() => {
-        if (messageHandler) {
-            window.removeEventListener('message', messageHandler);
+        if (channel) {
+            channel.close();
         }
     });
 

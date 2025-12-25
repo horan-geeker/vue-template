@@ -32,21 +32,17 @@ onMounted(async () => {
     const response = await googleService.handleCallback(params);
     
     if (response.code === 0 && response.data?.token) {
-      if (window.opener) {
-        window.opener.postMessage({
-           type: 'GOOGLE_LOGIN_SUCCESS',
-           payload: response.data
-        }, '*');
-        window.close();
-      } else {
-         // Fallback if not a popup
-         tokenStorage.setToken(response.data.token);
-         router.replace('/');
-      }
+      const channel = new BroadcastChannel('google-auth_channel');
+      channel.postMessage({
+          type: 'GOOGLE_LOGIN_SUCCESS',
+          payload: response.data
+      });
+      channel.close();
+      window.close();
     } else {
       console.error('Google Auth Failed', response);
       alert(response.message || 'Authentication failed');
-      window.close(); // Close on failure too? Or redirect? Let's close to be safe.
+      window.close(); 
     }
   } catch (error) {
     console.error('Google Auth Error', error);
