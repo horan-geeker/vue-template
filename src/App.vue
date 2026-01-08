@@ -1,15 +1,19 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-import { useI18n } from 'vue-i18n'
-import { computed } from 'vue'
-
-const { t } = useI18n()
+import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
 
 useHead({
-  title: computed(() => t('title'))
+  title: "Vue Template"
 })
 </script>
 
 <template>
-  <RouterView />
+  <div class="min-h-screen flex flex-col">
+    <Header />
+    <main class="flex-grow">
+      <RouterView />
+    </main>
+    <Footer />
+  </div>
 </template>

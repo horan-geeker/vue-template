@@ -14,15 +14,11 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^7.1.0",
-    "@fortawesome/free-solid-svg-icons": "^7.1.0",
-    "@fortawesome/vue-fontawesome": "^3.1.2",
     "@unhead/vue": "^2.0.19",
     "spark-md5": "^3.0.2",
     "vite-plugin-sitemap": "^0.8.2",
     "vite-ssg": "^28.2.2",
     "vue": "^3.5.25",
-    "vue-i18n": "^11.2.2",
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
