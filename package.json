@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@unhead/vue": "^2.0.19",
-    "spark-md5": "^3.0.2",
     "vite-plugin-sitemap": "^0.8.2",
     "vite-ssg": "^28.2.2",
     "vue": "^3.5.25",
