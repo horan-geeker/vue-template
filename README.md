@@ -7,6 +7,7 @@ This template should help get you started developing with Vue 3 in Vite.
 * 2、Upload favicon.ico to public folder
 * 3、Update vite.config.ts Sitemap hostname
 * 4、check index page title description
+* 5、check word > 800
 
 ## After deploy
 * 1、Check ahref seo 分数
